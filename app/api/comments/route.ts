@@ -3,10 +3,29 @@ import { NextResponse } from "next/server"
 
 const sql = neon(process.env.NEON_DATABASE_URL!)
 
+async function ensureTableExists() {
+  try {
+    await sql`
+      CREATE TABLE IF NOT EXISTS comments (
+        id SERIAL PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        message TEXT NOT NULL,
+        created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+      )
+    `
+    console.log("[v0] Comments table verified/created")
+  } catch (error) {
+    console.error("[v0] Error ensuring table exists:", error)
+    throw error
+  }
+}
+
 export async function GET() {
   try {
     console.log("[v0] Fetching comments from database...")
-    console.log("[v0] Database URL exists:", !!process.env.DATABASE_URL)
+    console.log("[v0] Database URL exists:", !!process.env.NEON_DATABASE_URL)
+
+    await ensureTableExists()
 
     const comments = await sql`
       SELECT id, name, message, created_at
@@ -43,6 +62,8 @@ export async function POST(request: Request) {
     if (!message || message.trim().length < 10) {
       return NextResponse.json({ error: "El mensaje debe tener al menos 10 caracteres" }, { status: 400 })
     }
+
+    await ensureTableExists()
 
     const result = await sql`
       INSERT INTO comments (name, message)
