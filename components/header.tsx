@@ -10,11 +10,11 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const menuItems = [
-    { label: "Inicio", href: "#inicio" },
-    { label: "Qué Encontrarás", href: "#que-encontraras" },
-    { label: "Nuestra Misión", href: "#mision" },
-    { label: "Comunidad y Testimonios", href: "#comunidad" },
-    { label: "Contacto", href: "#contacto" },
+    { label: "Inicio", href: "/" },
+    { label: "Alimentación", href: "/alimentacion" },
+    { label: "Salud", href: "/salud" },
+    { label: "Consejos", href: "/consejos" },
+    { label: "Comunidad", href: "/comunidad" },
   ]
 
   return (
@@ -25,7 +25,7 @@ export function Header() {
           <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
             <div className="relative w-12 h-12">
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202025-10-18%20at%201.32.17%20PM-I6DFy6CYADWpT1KBQkYmOBeTCaO2nQ.jpeg"
+                src="/images/whatsapp-20image-202025-10-18-20at-201.jpeg"
                 alt="Logo"
                 fill
                 className="object-contain"

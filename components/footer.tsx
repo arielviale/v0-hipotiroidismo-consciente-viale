@@ -39,6 +39,20 @@ export function Footer() {
           </div>
         </div>
 
+        {/* Added Disclaimer section */}
+        <div className="border-t py-8 my-8">
+          <div className="bg-muted/30 p-6 rounded-lg">
+            <h4 className="font-semibold text-sm mb-2">Descargo de Responsabilidad (Disclaimer)</h4>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              La información proporcionada en este sitio web es únicamente con fines educativos e informativos y no
+              sustituye el consejo médico profesional, diagnóstico o tratamiento. Siempre busca el consejo de tu médico
+              u otro proveedor de salud calificado ante cualquier duda que puedas tener respecto a una condición médica.
+              Nunca ignores el consejo médico profesional ni demores en buscarlo debido a algo que hayas leído en este
+              sitio web.
+            </p>
+          </div>
+        </div>
+
         <div className="border-t pt-8 text-center text-muted-foreground">
           <p className="flex items-center justify-center gap-2">
             Hecho con <Heart className="h-4 w-4 text-primary fill-primary" /> para la comunidad
