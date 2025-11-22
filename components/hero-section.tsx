@@ -25,7 +25,7 @@ export function HeroSection() {
               }}
             >
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202025-10-18%20at%201.32.17%20PM-I6DFy6CYADWpT1KBQkYmOBeTCaO2nQ.jpeg"
+                src="/images/viale-perfil.jpg"
                 alt="Hipotiroidismo Consciente - Personaje de tiroides feliz"
                 fill
                 className="object-contain drop-shadow-2xl relative z-10"
