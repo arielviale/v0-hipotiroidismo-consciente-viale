@@ -23,10 +23,10 @@ export function Header() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-            <div className="relative w-12 h-12">
+            <div className="relative w-14 h-14">
               <Image
-                src="/images/whatsapp-20image-202025-10-18-20at-201.jpeg"
-                alt="Logo"
+                src="/images/logocirculo.png"
+                alt="Logo Hipotiroidismo Consciente"
                 fill
                 className="object-contain"
               />
