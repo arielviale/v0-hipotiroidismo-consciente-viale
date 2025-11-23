@@ -10,6 +10,7 @@ const features = [
     iconBg: "bg-cyan-100",
     iconColor: "text-cyan-600",
     borderColor: "border-cyan-500",
+    href: "/alimentacion",
   },
   {
     icon: Heart,
@@ -18,6 +19,7 @@ const features = [
     iconBg: "bg-orange-100",
     iconColor: "text-orange-600",
     borderColor: "border-orange-500",
+    href: "/salud",
   },
   {
     icon: Lightbulb,
@@ -26,6 +28,7 @@ const features = [
     iconBg: "bg-yellow-100",
     iconColor: "text-yellow-600",
     borderColor: "border-yellow-500",
+    href: "/consejos",
   },
   {
     icon: Users,
@@ -34,6 +37,7 @@ const features = [
     iconBg: "bg-red-100",
     iconColor: "text-red-600",
     borderColor: "border-red-500",
+    href: "/comunidad",
   },
 ]
 
@@ -53,7 +57,7 @@ export function AboutSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {features.map((feature) => (
-            <Link key={feature.title} href="#" className="block group">
+            <Link key={feature.title} href={feature.href} className="block group">
               <Card
                 className={`h-full border-4 ${feature.borderColor} bg-white hover:shadow-2xl transition-all hover:-translate-y-2 duration-300 overflow-hidden rounded-3xl`}
               >
