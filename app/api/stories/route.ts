@@ -2,12 +2,10 @@ import { neon } from "@neondatabase/serverless"
 import { NextResponse } from "next/server"
 import { createClient } from "@/lib/supabase/server"
 
-// Initialize Neon client
-const sql = neon(process.env.DATABASE_URL!)
-
 // Ensure table exists
 async function ensureTable() {
   try {
+    const sql = neon(process.env.DATABASE_URL!)
     await sql`
       CREATE TABLE IF NOT EXISTS stories (
         id SERIAL PRIMARY KEY,
@@ -25,6 +23,11 @@ async function ensureTable() {
 
 export async function GET() {
   try {
+    if (!process.env.DATABASE_URL) {
+      return NextResponse.json({ error: "Database not configured", stories: [] }, { status: 503 })
+    }
+
+    const sql = neon(process.env.DATABASE_URL)
     await ensureTable()
     const stories = await sql`SELECT * FROM stories ORDER BY created_at DESC LIMIT 50`
     return NextResponse.json(stories)
@@ -36,6 +39,10 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
+    if (!process.env.DATABASE_URL) {
+      return NextResponse.json({ error: "Database not configured" }, { status: 503 })
+    }
+
     const supabase = await createClient()
     const {
       data: { user },
@@ -45,6 +52,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
+    const sql = neon(process.env.DATABASE_URL)
     await ensureTable()
     const { title, content, author_name } = await request.json()
 

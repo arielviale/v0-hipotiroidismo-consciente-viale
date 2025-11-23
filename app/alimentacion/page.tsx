@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { ArrowLeft, ChefHat, Leaf, Clock, CheckCircle } from "lucide-react"
+import { RecipesSection } from "@/components/recipes-section"
 
 export default function AlimentacionPage() {
   return (
@@ -58,41 +59,9 @@ export default function AlimentacionPage() {
           </Card>
         </div>
 
-        {/* Recipe Preview */}
+        {/* Recipe Section */}
         <div className="bg-muted/30 rounded-3xl p-8 md:p-12">
-          <h2 className="text-3xl font-bold mb-8 text-center">Recetas Destacadas</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Recipe 1 */}
-            <div className="bg-background rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all">
-              <div className="h-48 bg-neutral-200 relative flex items-center justify-center">
-                <span className="text-muted-foreground">Foto de Pan de Trigo Sarraceno</span>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2">Pan de Trigo Sarraceno</h3>
-                <p className="text-muted-foreground mb-4">
-                  Crujiente por fuera, suave por dentro. La alternativa perfecta para tus tostadas mañaneras.
-                </p>
-                <Button variant="outline" className="w-full bg-transparent">
-                  Ver Receta
-                </Button>
-              </div>
-            </div>
-            {/* Recipe 2 */}
-            <div className="bg-background rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all">
-              <div className="h-48 bg-neutral-200 relative flex items-center justify-center">
-                <span className="text-muted-foreground">Foto de Muffins de Arándanos</span>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2">Muffins de Arándanos</h3>
-                <p className="text-muted-foreground mb-4">
-                  Sin azúcar y llenos de antioxidantes. El snack ideal para media tarde.
-                </p>
-                <Button variant="outline" className="w-full bg-transparent">
-                  Ver Receta
-                </Button>
-              </div>
-            </div>
-          </div>
+          <RecipesSection />
         </div>
 
         <div className="mt-12 text-center">
