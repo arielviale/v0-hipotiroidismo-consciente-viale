@@ -61,7 +61,7 @@ export default function ConsejosPage() {
         </div>
 
         {/* Downloadable */}
-        <div className="bg-primary/5 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="bg-primary/5 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 text-secondary">
           <div>
             <h2 className="text-3xl font-bold mb-4">Mini Guía de Inicio</h2>
             <p className="text-lg text-muted-foreground mb-6">
