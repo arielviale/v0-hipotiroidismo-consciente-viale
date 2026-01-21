@@ -1,41 +1,24 @@
-import { neon } from "@neondatabase/serverless"
 import { NextResponse } from "next/server"
-
-const sql = neon(process.env.NEON_DATABASE_URL!)
-
-async function ensureTableExists() {
-  try {
-    await sql`
-      CREATE TABLE IF NOT EXISTS comments (
-        id SERIAL PRIMARY KEY,
-        name VARCHAR(255) NOT NULL,
-        message TEXT NOT NULL,
-        created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
-      )
-    `
-    console.log("[v0] Comments table verified/created")
-  } catch (error) {
-    console.error("[v0] Error ensuring table exists:", error)
-    throw error
-  }
-}
+import { createClient } from "@/lib/supabase/server"
 
 export async function GET() {
   try {
-    console.log("[v0] Fetching comments from database...")
-    console.log("[v0] Database URL exists:", !!process.env.NEON_DATABASE_URL)
+    const supabase = await createClient()
 
-    await ensureTableExists()
+    // Note: 'comments' table must exist in Supabase
+    const { data: comments, error } = await supabase
+      .from("comments")
+      .select("id, name, message, created_at")
+      .order("created_at", { ascending: false })
+      .limit(50)
 
-    const comments = await sql`
-      SELECT id, name, message, created_at
-      FROM comments
-      ORDER BY created_at DESC
-      LIMIT 50
-    `
+    if (error) {
+      console.error("[v0] Supabase error fetching comments:", error)
+      throw error
+    }
 
-    console.log("[v0] Successfully fetched", comments.length, "comments")
-    return NextResponse.json({ comments })
+    console.log("[v0] Successfully fetched", comments?.length || 0, "comments")
+    return NextResponse.json({ comments: comments || [] })
   } catch (error) {
     console.error("[v0] Error fetching comments:", error)
     return NextResponse.json(
@@ -63,16 +46,26 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "El mensaje debe tener al menos 10 caracteres" }, { status: 400 })
     }
 
-    await ensureTableExists()
+    const supabase = await createClient()
 
-    const result = await sql`
-      INSERT INTO comments (name, message)
-      VALUES (${name.trim()}, ${message.trim()})
-      RETURNING id, name, message, created_at
-    `
+    const { data, error } = await supabase
+      .from("comments")
+      .insert([
+        {
+          name: name.trim(),
+          message: message.trim(),
+        },
+      ])
+      .select("id, name, message, created_at")
+      .single()
 
-    console.log("[v0] Comment created successfully:", result[0].id)
-    return NextResponse.json({ comment: result[0] })
+    if (error) {
+      console.error("[v0] Supabase error creating comment:", error)
+      throw error
+    }
+
+    console.log("[v0] Comment created successfully:", data.id)
+    return NextResponse.json({ comment: data })
   } catch (error) {
     console.error("[v0] Error creating comment:", error)
     return NextResponse.json(
