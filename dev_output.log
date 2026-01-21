@@ -1,0 +1,38 @@
+
+> my-v0-project@0.1.0 dev /app
+> next dev
+
+   ▲ Next.js 15.5.4
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.0.2:3000
+
+ ✓ Starting...
+ ✓ Ready in 2.9s
+ ○ Compiling /middleware ...
+ ✓ Compiled /middleware in 2.1s (199 modules)
+Supabase environment variables are missing. Auth is disabled.
+ ○ Compiling /consejos ...
+<w> [webpack.cache.PackFileCacheStrategy] Serializing big strings (128kiB) impacts deserialization performance (consider using Buffer instead and decode when needed)
+ ✓ Compiled /consejos in 7.7s (645 modules)
+ GET /consejos 200 in 9271ms
+Supabase environment variables are missing. Auth is disabled.
+ ○ Compiling /alimentacion ...
+ ✓ Compiled /alimentacion in 1351ms (677 modules)
+Supabase environment variables are missing. Auth is disabled.
+ GET /alimentacion 200 in 1897ms
+Supabase environment variables are missing. Auth is disabled.
+ ○ Compiling /api/recipes ...
+ ✓ Compiled /api/recipes in 1081ms (788 modules)
+[v0] Error in recipes API: Error: Missing Supabase environment variables
+    at createClient (lib/supabase/server.ts:16:11)
+    at async GET (app/api/recipes/route.ts:5:22)
+  14 |
+  15 |   if (!supabaseUrl || !supabaseKey) {
+> 16 |     throw new Error("Missing Supabase environment variables")
+     |           ^
+  17 |   }
+  18 |
+  19 |   return createServerClient(supabaseUrl, supabaseKey, {
+ ✓ Compiled in 270ms (270 modules)
+ ✓ Compiled in 213ms (270 modules)
+ ✓ Compiled in 257ms (270 modules)
