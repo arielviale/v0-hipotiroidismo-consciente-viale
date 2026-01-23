@@ -49,6 +49,7 @@ export async function updateSession(request: NextRequest) {
     !request.nextUrl.pathname.startsWith("/alimentacion") &&
     !request.nextUrl.pathname.startsWith("/salud") &&
     !request.nextUrl.pathname.startsWith("/consejos") &&
+    !request.nextUrl.pathname.startsWith("/comunidad") &&
     !request.nextUrl.pathname.startsWith("/api")
   ) {
     // no user, potentially respond by redirecting the user to the login page
