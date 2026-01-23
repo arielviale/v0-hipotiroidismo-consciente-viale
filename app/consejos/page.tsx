@@ -25,8 +25,8 @@ export default function ConsejosPage() {
           <div className="relative bg-card p-10 rounded-3xl shadow-lg border border-border/50">
             <Quote className="h-12 w-12 text-primary/20 absolute top-6 left-6" />
             <p className="text-2xl md:text-3xl font-serif italic text-foreground/80 mb-6">
-              "Tu diagnóstico no te define, es solo el comienzo de un viaje hacia un mayor autoconocimiento y cuidado
-              personal."
+              &quot;Tu diagnóstico no te define, es solo el comienzo de un viaje hacia un mayor autoconocimiento y cuidado
+              personal.&quot;
             </p>
             <span className="font-bold text-primary">— Hipotiroidismo Consciente</span>
           </div>
