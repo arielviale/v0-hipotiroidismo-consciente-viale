@@ -1,0 +1,17 @@
+
+> my-v0-project@0.1.0 dev
+> next dev
+
+   ▲ Next.js 15.5.4
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.0.2:3000
+
+ ✓ Starting...
+ ✓ Ready in 1931ms
+ ○ Compiling /middleware ...
+ ✓ Compiled /middleware in 1476ms (199 modules)
+Supabase environment variables are missing. Auth is disabled.
+ ○ Compiling /consejos ...
+<w> [webpack.cache.PackFileCacheStrategy] Serializing big strings (128kiB) impacts deserialization performance (consider using Buffer instead and decode when needed)
+ ✓ Compiled /consejos in 8.6s (645 modules)
+ GET /consejos 200 in 10344ms

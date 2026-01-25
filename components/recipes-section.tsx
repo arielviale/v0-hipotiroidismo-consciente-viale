@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 
 interface Recipe {
@@ -74,10 +75,11 @@ export function RecipesSection() {
           >
             <div className="h-48 bg-neutral-200 relative flex items-center justify-center overflow-hidden">
               {recipe.image_url ? (
-                <img
+                <Image
                   src={recipe.image_url || "/placeholder.svg"}
                   alt={recipe.title}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
               ) : (
                 <span className="text-muted-foreground text-center px-4">Foto de {recipe.title}</span>
